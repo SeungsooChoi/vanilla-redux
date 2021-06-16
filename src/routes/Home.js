@@ -1,6 +1,9 @@
 import React, { useState } from "react";
+import { connect } from "react-redux";
 
-function Home() {
+// store로부터 state를 가져올 수 있어야 함.
+function Home(props) {
+  console.log(props);
   const [text, setText] = useState("");
   function onChange(e) {
     setText(e.target.value);
@@ -22,4 +25,8 @@ function Home() {
   );
 }
 
-export default Home;
+function mapStateToProps(state, ownProps) {
+  return { toDos: state };
+}
+
+export default connect(mapStateToProps)(Home);
