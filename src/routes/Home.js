@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { connect } from "react-redux";
+import Todo from "../components/ToDo";
 import { actionCreators } from "../store";
 
 // store로부터 state를 가져올 수 있어야 함.
@@ -20,7 +21,11 @@ function Home({ toDos, addToDo }) {
         <input type="text" value={text} onChange={onChange} />
         <button>Add</button>
       </form>
-      <ul>{JSON.stringify(toDos)}</ul>
+      <ul>
+        {toDos.map((toDo) => (
+          <Todo {...toDo} key={toDo.id} />
+        ))}
+      </ul>
     </>
   );
 }

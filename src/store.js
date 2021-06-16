@@ -14,7 +14,7 @@ const addToDo = (text) => {
 const deleteToDo = (id) => {
   return {
     type: DELETE,
-    id,
+    id: parseInt(id),
   };
 };
 
@@ -23,7 +23,7 @@ const reducer = (state = [], action) => {
     case ADD:
       return [...state, { text: action.text, id: action.id }];
     case DELETE:
-      return state.filter((toDo) => toDo !== action.id);
+      return state.filter((toDo) => toDo.id !== action.id);
     default:
       return state;
   }
